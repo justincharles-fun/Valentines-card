@@ -1,5 +1,6 @@
 const card = document.getElementById('card');
 const flowerContainer = document.querySelector('.flower-container');
+const audio = document.getElementById('romanticMusic'); // Reference the audio element
 
 card.addEventListener('click', () => {
     card.classList.toggle('flipped');
@@ -7,17 +8,10 @@ card.addEventListener('click', () => {
     // Toggle bloom class to restart animations on each flip to back
     if (card.classList.contains('flipped')) {
         flowerContainer.classList.add('bloom');
+        audio.play(); // Play music when flipping to back
     } else {
         flowerContainer.classList.remove('bloom');
+        audio.pause(); // Pause music when flipping back to front
+        audio.currentTime = 0; // Optional: Reset to start
     }
 });
-
-// Optional: Play a soft romantic sound on flip (uncomment and add audio file)
-// const audio = new Audio('path/to/romantic-music.mp3');
-// card.addEventListener('click', () => {
-//     if (card.classList.contains('flipped')) {
-//         audio.play();
-//     } else {
-//         audio.pause();
-//     }
-// });
